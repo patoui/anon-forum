@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.container {
+    margin-top: 25px;
+}
+
+ul.suggestions li {
+    cursor: pointer;
+}
+
+ul.suggestions li:hover,
+ul.suggestions li:focus {
+    background-color: rgba(0,0,0,0.075);
+}
