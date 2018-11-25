@@ -10,6 +10,8 @@ class PostController < ApplicationController
 
   def new
 
+    @post = Post.new
+
     render 'new'
 
   end
@@ -24,7 +26,7 @@ class PostController < ApplicationController
 
     else
 
-      render "new"
+      render 'new'
 
     end
 

@@ -8,6 +8,20 @@
 
       <input id="title" name="title" type="text" class="form-control" />
 
+      <div class="invalid-feedback d-block">
+
+        <% if @post.errors.include?(:title) %>
+
+          <% @post.errors[:title].each do |message| %>
+
+            <p><%= message %></p>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
+
     </div>
 
     <div class="form-group">
@@ -15,6 +29,20 @@
       <label for="body">Body</label>
 
       <textarea id="body" name="body" class="form-control"></textarea>
+
+      <div class="invalid-feedback d-block">
+
+        <% if @post.errors.include?(:title) %>
+
+          <% @post.errors[:title].each do |message| %>
+
+            <p><%= message %></p>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
 
     </div>
 
