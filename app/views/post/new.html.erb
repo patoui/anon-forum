@@ -1,0 +1,25 @@
+<div class="container">
+
+  <%= form_tag("/thread") do %>
+
+    <div class="form-group">
+
+      <label for="title">Title</label>
+
+      <input id="title" name="title" type="text" class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="body">Body</label>
+
+      <textarea id="body" name="body" class="form-control"></textarea>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  <% end %>
+
+</div>

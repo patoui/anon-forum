@@ -15,6 +15,51 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <h1 class="navbar-brand mb-0"><a href="#">#anonforum</a></h1>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="form-inline my-2 my-lg-0 ml-auto">
+
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+
+        </form>
+
+      </div>
+
+    </nav>
+
     <%= yield %>
+
+    <footer class="mt-5 mb-5 pl-2 pr-2">
+
+      <p class="text-center">From your friendly community developer</p>
+
+      <p class="text-center">Patrique Ouimet</p>
+
+      <p class="text-center">
+
+        <a class="mr-5" href="https://twitter.com/patoui2" target="_blank"><i class="fab fa-2x fa-twitter"></i></a>
+
+        <a class="mr-5" href="https://github.com/patoui" target="_blank"><i class="fab fa-2x fa-github"></i></a>
+
+        <a href="https://www.instagram.com/patoui2" target="_blank"><i class="fab fa-2x fa-instagram"></i></a>
+
+      </p>
+
+    </footer>
+
   </body>
+
 </html>
