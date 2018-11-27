@@ -43,7 +43,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
 
     post = Post.create(title: 'My Thread', body: 'My thread body')
 
-    get "/thread/#{post.id}"
+    get "/thread/#{post.slug}"
 
     assert_response :success
 

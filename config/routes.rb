@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
   post '/thread' => 'post#create'
 
-  get '/thread/:id' => 'post#show'
+  get '/thread/:slug' => 'post#show'
 
 end
