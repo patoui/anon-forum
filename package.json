@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node_modules/.bin/webpack",
     "prod": "node_modules/.bin/webpack -p --progress --colors",
-    "watch": "npm run build -- --watch"
+    "watch": "node_modules/.bin/webpack --watch"
   },
   "dependencies": {},
   "devDependencies": {

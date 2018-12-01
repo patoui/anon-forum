@@ -20,7 +20,7 @@
 
             <h5 class="mt-3"><a href="/thread/<%= post.slug %>"><%= post.title %></a></h5>
 
-            <p><%= post.body %></p>
+            <p><%= strip_tags(post.body)[0...100] + '...' %></p>
 
           </li>
 

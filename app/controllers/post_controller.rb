@@ -4,8 +4,6 @@ class PostController < ApplicationController
 
     @posts = Post.all
 
-    render 'index'
-
   end
 
   def new
