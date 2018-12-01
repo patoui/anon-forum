@@ -3,4 +3,4 @@ require('./sass/app.scss');
 
 // JavaScript
 require('trix');
-require('./javascripts/app.js');
+require('./javascripts/app');
