@@ -51,12 +51,14 @@ class PostControllerTest < ActionDispatch::IntegrationTest
 
   test "can see a thread" do
     post = Post.create(title: 'My Thread', body: 'My thread body')
+    Reply.create(post_id: post.id, body: 'First reply')
 
     get "/thread/#{post.slug}"
 
     assert_response :success
     assert_select 'h3', 'My Thread'
     assert_select 'div', 'My thread body'
+    assert_select 'p', 'First reply'
   end
 
 end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
 
   get '/thread/:slug' => 'post#show'
 
+  post '/thread/:slug/reply' => 'reply#create'
+
 end

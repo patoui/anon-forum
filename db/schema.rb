@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_212556) do
+ActiveRecord::Schema.define(version: 2018_12_02_132253) do
 
   create_table "activities", force: :cascade do |t|
     t.string "ip_address"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2018_12_01_212556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_posts_on_slug"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_replies_on_post_id"
   end
 
 end
