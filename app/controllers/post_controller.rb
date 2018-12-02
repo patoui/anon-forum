@@ -1,7 +1,7 @@
 include ActivityHelper
 
 class PostController < ApplicationController
-  before_action :check_throttle, only: :create
+  before_action CheckThrottle, only: :create
 
   def index
     @posts = params[:q].present? ?
@@ -27,16 +27,4 @@ class PostController < ApplicationController
     @post = Post.where(slug: params[:slug]).first
   end
 
-  private
-
-  def check_throttle
-    activityCount = Activity.where(ip_address: request.remote_ip)
-      .where(created_at: (Time.now.ago(300))..Time.now)
-      .count
-
-    if activityCount >= 5
-      flash[:error] = "You've exhausted your activity limit."
-      redirect_to action: 'index' and return
-    end
-  end
 end
