@@ -1,0 +1,59 @@
+<div id="reply" class="mt-4">
+
+  <h5 class="ml-2 text-muted">Reply</h5>
+
+  <%= form_tag("/thread/#{@post.slug}/reply") do %>
+
+    <div class="form-group">
+
+      <textarea id="reply_body" name="body" class="form-control" placeholder="Leave a reply..."></textarea>
+
+      <div class="invalid-feedback d-block">
+
+        <% if @post.errors.include?(:body) %>
+
+          <% @post.errors[:body].each do |message| %>
+
+            <p><%= message %></p>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+
+  <% end %>
+
+</div>
+
+<div id="replies" class="mt-4">
+
+  <h5 class="ml-2 text-muted">Replies</h5>
+
+  <ul class="list-group list-group-flush">
+
+    <% @post.replies.each do |reply| %>
+
+    <li class="list-group-item">
+
+      <p class="mb-2"><%= reply.body %></p>
+
+      <p id="reply_actions" class="m-0 ml-2">
+
+        <a href="#"><i class="fas fa-thumbs-up"></i></a>
+
+        <a href="#" class="ml-3"><i class="fas fa-thumbs-down"></i></a>
+
+      </p>
+
+    </li>
+
+    <% end %>
+
+  </ul>
+
+</div>
