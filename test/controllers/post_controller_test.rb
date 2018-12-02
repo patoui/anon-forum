@@ -32,7 +32,8 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     post "/thread",
-      params: { title: "My New Thread", body: "The body of my new thread" }
+      params: { title: "My New Thread", body: "The body of my new thread" },
+      headers: { 'HTTP_USER_AGENT': 'FAKE_USER_AGENT' }
 
     assert_response :redirect
 
@@ -40,6 +41,12 @@ class PostControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select "a", "My New Thread"
+    assert_not_nil(
+      Activity.where(
+        user_agent: 'FAKE_USER_AGENT',
+        class_name: 'Post'
+      ).first
+    )
   end
 
   test "can see a thread" do

@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_23_200457) do
+ActiveRecord::Schema.define(version: 2018_12_01_212556) do
+
+  create_table "activities", force: :cascade do |t|
+    t.string "ip_address"
+    t.text "user_agent"
+    t.string "class_name"
+    t.integer "object_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address"], name: "index_activities_on_ip_address"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "slug"
