@@ -15,13 +15,15 @@
 // Trix
 @import '~trix/dist/trix.css';
 
-ul.suggestions li {
-    cursor: pointer;
+.pagination {
+  padding: 0 10px;
 }
 
-ul.suggestions li:hover,
-ul.suggestions li:focus {
-    background-color: rgba(0,0,0,0.075);
+.pagination .previous_page,
+.pagination .next_page,
+.pagination .current,
+.pagination a {
+  padding: 10px 15px;
 }
 
 #reply_actions a i.fas {

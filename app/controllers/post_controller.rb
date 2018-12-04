@@ -4,9 +4,10 @@ class PostController < ApplicationController
   before_action CheckThrottle, only: :create
 
   def index
+    page = params[:page].present? ? params[:page] : 1
     @posts = params[:q].present? ?
-      Post.where('title LIKE ?', "%#{params[:q]}%") :
-      Post.all
+      Post.where('title LIKE ?', "%#{params[:q]}%").paginate(:page => page) :
+      Post.paginate(:page => page)
   end
 
   def new
