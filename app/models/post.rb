@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
-  validates :title, presence: true
-  validates :body, presence: true
+  validates :title, presence: true, bad_word: true
+  validates :body, presence: true, bad_word: true
 
   before_create :generate_slug
 

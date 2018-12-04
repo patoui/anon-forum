@@ -14,7 +14,7 @@ class PostController < ApplicationController
   end
 
   def create
-    @post = Post.new(title: params[:title], body: params[:body])
+    @post = Post.new(post_params)
     if @post.save
       record_activity(request, @post)
       redirect_to action: 'index' and return
@@ -26,5 +26,10 @@ class PostController < ApplicationController
   def show
     @post = Post.where(slug: params[:slug]).first
   end
+
+  private
+    def post_params
+      params.require(:post).permit(:title, :body)
+    end
 
 end

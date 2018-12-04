@@ -6,7 +6,7 @@
 
       <label for="title">Title</label>
 
-      <input id="title" name="title" type="text" class="form-control" />
+      <input id="title" name="post[title]" type="text" class="form-control" value="<%= @post.title %>" />
 
       <div class="invalid-feedback d-block">
 
@@ -28,14 +28,14 @@
 
       <label for="body">Body</label>
 
-      <input id="thread_body" type="hidden" name="body">
+      <input id="thread_body" type="hidden" name="post[body]" value="<%= @post.body %>">
       <trix-editor input="thread_body"></trix-editor>
 
       <div class="invalid-feedback d-block">
 
-        <% if @post.errors.include?(:title) %>
+        <% if @post.errors.include?(:body) %>
 
-          <% @post.errors[:title].each do |message| %>
+          <% @post.errors[:body].each do |message| %>
 
             <p><%= message %></p>
 
