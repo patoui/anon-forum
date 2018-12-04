@@ -17,13 +17,7 @@
 
 .pagination {
   padding: 0 10px;
-}
-
-.pagination .previous_page,
-.pagination .next_page,
-.pagination .current,
-.pagination a {
-  padding: 10px 15px;
+  .previous_page, .next_page, .current, a { padding: 10px 15px; }
 }
 
 #reply_actions a i.fas {
