@@ -6,7 +6,6 @@ class BadWordValidator < ActiveModel::EachValidator
     end
 
     value_array = ActionController::Base.helpers.strip_tags(value.to_s).gsub(/[^0-9a-z ]/i, '').split
-    Rails.logger.debug "BAD WORDS (#{attribute}): #{value_array.to_s}"
 
     if value_array.length > 0
       for word in value_array
