@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   post '/thread/:slug/reply' => 'reply#create'
 
+  post '/thread/:slug/upvote' => 'post_upvote#create'
+
 end

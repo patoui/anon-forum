@@ -50,6 +50,7 @@ class ReplyControllerTest < ActionDispatch::IntegrationTest
     assert_select 'p', 'This is a cool thread!'
     assert_not_nil(
       Activity.where(
+        name: 'created-reply',
         user_agent: 'FAKE_REPLY_USER_AGENT',
         class_name: 'Reply'
       ).first

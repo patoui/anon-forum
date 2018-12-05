@@ -8,7 +8,7 @@ class ReplyController < ApplicationController
     @reply = Reply.new(post_id: @post.id, body: params[:body])
 
     if @reply.save
-      record_activity(request, @reply)
+      record_activity('created-reply', request, @reply)
       redirect_to "/thread/#{@post.slug}"
     else
       render template: '/post/show' and return

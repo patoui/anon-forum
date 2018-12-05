@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_132253) do
+ActiveRecord::Schema.define(version: 2018_12_05_130616) do
 
   create_table "activities", force: :cascade do |t|
+    t.string "name"
     t.string "ip_address"
     t.text "user_agent"
     t.string "class_name"
@@ -20,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_132253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ip_address"], name: "index_activities_on_ip_address"
+    t.index ["name"], name: "index_activities_on_name"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -28,6 +30,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_132253) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "upvote_count", default: 0
     t.index ["slug"], name: "index_posts_on_slug"
   end
 

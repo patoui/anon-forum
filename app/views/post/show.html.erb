@@ -8,7 +8,11 @@
 
     </div>
 
-    <div class="card-body"><%= @post.body.html_safe %></div>
+    <div class="card-body">
+      <p class="card-text"><%= @post.body.html_safe %></p>
+      <%= form_tag("/thread/#{@post.slug}/upvote", class: "d-inline-block") do %><button type="submit" class="btn pl-2 pr-2 light-grey"><i class="fas fa-thumbs-up"></i><span class="ml-3"><%= @post.upvote_count %></span></button><% end %>
+      <a href="#" class="pl-2 pr-2 light-grey"><i class="fas fa-thumbs-down"></i></a>
+    </div>
 
   </div>
 

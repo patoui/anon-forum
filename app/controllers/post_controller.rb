@@ -17,7 +17,7 @@ class PostController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      record_activity(request, @post)
+      record_activity('created-post', request, @post)
       redirect_to action: 'index' and return
     else
       render 'new'
