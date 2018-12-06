@@ -46,7 +46,7 @@
 
         <%= form_tag("/thread/#{@post.slug}/reply/#{reply.id}/upvote", class: "d-inline-block") do %><button type="submit" class="btn pl-2 pr-2 light-grey"><i class="fas fa-thumbs-up"></i><span class="ml-3"><%= reply.upvote_count %></span></button><% end %>
 
-        <a href="#" class="ml-3"><i class="fas fa-thumbs-down"></i></a>
+        <%= form_tag("/thread/#{@post.slug}/reply/#{reply.id}/downvote", class: "d-inline-block") do %><button type="submit" class="btn pl-2 pr-2 light-grey"><i class="fas fa-thumbs-down"></i><span class="ml-3"><%= reply.downvote_count %></span></button><% end %>
 
       </p>
 

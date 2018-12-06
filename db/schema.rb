@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_123239) do
+ActiveRecord::Schema.define(version: 2018_12_06_124537) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_123239) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "upvote_count", default: 0
+    t.integer "downvote_count", default: 0
     t.index ["post_id"], name: "index_replies_on_post_id"
   end
 
