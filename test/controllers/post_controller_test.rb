@@ -58,7 +58,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select 'h3', 'My Thread'
-    assert_select 'div', 'My thread body'
+    assert_select 'p', 'My thread body'
     assert_select 'p', 'First reply'
   end
 

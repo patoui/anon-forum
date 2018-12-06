@@ -6,7 +6,7 @@ class CheckThrottle
 
     if activityCount >= 5
       controller.flash[:error] = "You've exhausted your activity limit."
-      controller.redirect_to action: 'index' and return
+      controller.redirect_to '/' and return
     end
   end
 end

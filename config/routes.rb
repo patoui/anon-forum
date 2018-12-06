@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   post '/thread/:slug/upvote' => 'post_upvote#create'
 
+  post '/thread/:slug/downvote' => 'post_downvote#create'
+
 end
