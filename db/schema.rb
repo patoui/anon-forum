@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_124537) do
+ActiveRecord::Schema.define(version: 2018_12_07_030217) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 2018_12_06_124537) do
     t.index ["slug"], name: "index_posts_on_slug"
   end
 
+  create_table "posts_topics", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "topic_id"
+    t.index ["post_id", "topic_id"], name: "index_posts_topics_on_post_id_and_topic_id", unique: true
+    t.index ["post_id"], name: "index_posts_topics_on_post_id"
+    t.index ["topic_id"], name: "index_posts_topics_on_topic_id"
+  end
+
   create_table "replies", force: :cascade do |t|
     t.integer "post_id", null: false
     t.text "body"
@@ -43,6 +51,13 @@ ActiveRecord::Schema.define(version: 2018_12_06_124537) do
     t.integer "upvote_count", default: 0
     t.integer "downvote_count", default: 0
     t.index ["post_id"], name: "index_replies_on_post_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_topics_on_name"
   end
 
 end

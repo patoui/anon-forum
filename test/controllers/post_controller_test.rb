@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class PostControllerTest < ActionDispatch::IntegrationTest
-
   test "can see threads" do
     get '/'
 
@@ -24,6 +23,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     get '/thread/new'
 
     assert_response :success
+    assert_select 'label', 'Topics'
   end
 
   test "can create a thread" do
@@ -32,7 +32,13 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
 
     post "/thread",
-      params: { post: { title: "My New Thread", body: "The body of my new thread" }},
+      params: {
+        post: {
+          title: "My New Thread",
+          body: "The body of my new thread"
+        },
+        topics: [ 'rubyonrails' ]
+      },
       headers: { 'HTTP_USER_AGENT': 'FAKE_USER_AGENT' }
 
     assert_response :redirect
@@ -40,7 +46,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
 
     assert_response :success
-    assert_select "a", "My New Thread"
+    assert_select 'a', 'My New Thread'
     assert_not_nil(
       Activity.where(
         name: 'created-post',
@@ -48,6 +54,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
         class_name: 'Post'
       ).first
     )
+    assert_not_nil(Topic.find_by(name: 'rubyonrails'))
   end
 
   test "can see a thread" do
@@ -61,5 +68,4 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     assert_select 'p', 'My thread body'
     assert_select 'p', 'First reply'
   end
-
 end

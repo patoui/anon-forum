@@ -18,6 +18,7 @@ class PostController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       record_activity('created-post', request, @post)
+      @post.addTopics(params[:topics])
       redirect_to action: 'index' and return
     else
       render 'new'
@@ -29,8 +30,8 @@ class PostController < ApplicationController
   end
 
   private
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
 
 end
