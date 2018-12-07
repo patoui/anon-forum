@@ -12,9 +12,9 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not_nil assigns(:posts)
     assert_select 'h5', 'My PHP Thread'
-    assert_select 'a', 'php_is_neat'
+    assert_select 'a', '#php_is_neat'
     assert_select 'h5', 'My Rails Thread'
-    assert_select 'a', 'rails_is_neat'
+    assert_select 'a', '#rails_is_neat'
   end
 
   test "can search threads" do
