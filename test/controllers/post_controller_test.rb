@@ -3,9 +3,9 @@ require 'test_helper'
 class PostControllerTest < ActionDispatch::IntegrationTest
   test "can see threads" do
     php_thread = Post.create(title: 'My PHP Thread', body: 'PHP is interesting')
-    php_thread.topics << Topic.find_or_create_by(name: 'php_is_neat')
+    php_thread.tags << Tag.find_or_create_by(name: 'php_is_neat')
     rails_thread = Post.create(title: 'My Rails Thread', body: 'Rails is also interesting')
-    rails_thread.topics << Topic.find_or_create_by(name: 'rails_is_neat')
+    rails_thread.tags << Tag.find_or_create_by(name: 'rails_is_neat')
 
     get '/'
 
@@ -32,7 +32,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     get '/thread/new'
 
     assert_response :success
-    assert_select 'label', 'Topics'
+    assert_select 'label', 'Tags'
   end
 
   test "can create a thread" do
@@ -46,7 +46,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
           title: "My New Thread",
           body: "The body of my new thread"
         },
-        topics: [ 'rubyonrails' ]
+        tags: [ 'rubyonrails' ]
       },
       headers: { 'HTTP_USER_AGENT': 'FAKE_USER_AGENT' }
 
@@ -63,7 +63,7 @@ class PostControllerTest < ActionDispatch::IntegrationTest
         class_name: 'Post'
       ).first
     )
-    assert_not_nil(Topic.find_by(name: 'rubyonrails'))
+    assert_not_nil(Tag.find_by(name: 'rubyonrails'))
   end
 
   test "can see a thread" do

@@ -18,7 +18,7 @@ class PostController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       record_activity('created-post', request, @post)
-      @post.addTopics(params[:topics])
+      @post.addTags(params[:tags])
       redirect_to action: 'index' and return
     else
       render 'new'

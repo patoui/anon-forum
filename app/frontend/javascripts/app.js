@@ -1,32 +1,32 @@
 window.onload = () => {
-  let addNewTopic = document.querySelector('#add_new_topic');
-  let newTopic = document.querySelector('#new_topic');
-  let topics = document.querySelector('#topics');
+  let addNewTag = document.querySelector('#add_new_tag');
+  let newTag = document.querySelector('#new_tag');
+  let tags = document.querySelector('#tags');
 
-  if (addNewTopic && newTopic && topics) {
-    newTopic.addEventListener('keyup', (e) => {
+  if (addNewTag && newTag && tags) {
+    newTag.addEventListener('keyup', (e) => {
       e.target.value = e.target.value.replace(/\s/g, '');
     });
-    addNewTopic.addEventListener('click', (e) => {
-      const topicContainer = document.createElement('button');
-      topicContainer.type = 'button';
-      topicContainer.textContent = newTopic.value;
-      topicContainer.id = `topics[${newTopic.value}]`;
-      topicContainer.classList.add(
+    addNewTag.addEventListener('click', (e) => {
+      const tagContainer = document.createElement('button');
+      tagContainer.type = 'button';
+      tagContainer.textContent = `#${newTag.value}`;
+      tagContainer.id = `tags[${newTag.value}]`;
+      tagContainer.classList.add(
         'btn',
         'btn-outline-secondary',
         'btn-sm',
         'mr-2'
       );
-      const topic = document.createElement('input');
-      topic.name = 'topics[]';
-      topic.type = 'hidden';
-      topic.value = newTopic.value;
-      topicContainer.append(topic);
-      topics.append(topicContainer);
-      newTopic.value = '';
+      const tag = document.createElement('input');
+      tag.name = 'tags[]';
+      tag.type = 'hidden';
+      tag.value = newTag.value;
+      tagContainer.append(tag);
+      tags.append(tagContainer);
+      newTag.value = '';
     });
-    topics.addEventListener('click', (e) => {
+    tags.addEventListener('click', (e) => {
       if (e.target.type === 'button') {
         e.target.remove();
       }

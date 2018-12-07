@@ -49,27 +49,27 @@
 
     <div class="form-group">
 
-      <label class="sr-only" for="new_topic">Topics</label>
+      <label class="sr-only" for="new_tag">Tags</label>
 
       <div class="input-group mb-2">
 
-        <input type="text" class="form-control" id="new_topic" placeholder="Add a topic...">
+        <input type="text" class="form-control" id="new_tag" placeholder="Add a tag...">
 
         <div class="input-group-append">
 
-          <button id="add_new_topic" type="button" class="btn btn-primary input-group-text">Add</button>
+          <button id="add_new_tag" type="button" class="btn btn-primary input-group-text">Add</button>
 
         </div>
 
       </div>
 
-      <div id="topics"></div>
+      <div id="tags"></div>
 
       <div class="invalid-feedback d-block">
 
-        <% if @post.errors.include?(:topics) %>
+        <% if @post.errors.include?(:tags) %>
 
-          <% @post.errors[:topics].each do |message| %>
+          <% @post.errors[:tags].each do |message| %>
 
             <p><%= message %></p>
 

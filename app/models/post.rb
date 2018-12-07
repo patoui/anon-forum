@@ -5,12 +5,12 @@ class Post < ApplicationRecord
   before_create :generate_slug
 
   has_many :replies, dependent: :destroy
-  has_and_belongs_to_many :topics, -> { distinct }
+  has_and_belongs_to_many :tags, -> { distinct }
 
-  def addTopics(items)
+  def addTags(items)
     if items.kind_of?(Array)
       items.each do |item|
-        self.topics << Topic.find_or_create_by(name: item)
+        self.tags << Tag.find_or_create_by(name: item)
       end
     end
   end

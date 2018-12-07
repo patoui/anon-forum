@@ -23,8 +23,8 @@
             <p><%= post.body ? strip_tags(post.body)[0...100] + '...' : '' %></p>
 
             <p class="m-0 small text-monospace text-muted">
-              <% post.topics.all.each do |topic|  %>
-                <a href="/?topic=<%= topic.name %>" class="mr-2"><%= topic.name %></a>
+              <% post.tags.all.each do |tag|  %>
+                <a href="/?tag=<%= tag.name %>" class="mr-2"><%= '#' + tag.name %></a>
               <% end %>
             </p>
 
