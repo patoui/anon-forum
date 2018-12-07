@@ -32,3 +32,8 @@
 
 # Compiled Assets
 /app/assets/*
+
+# System files
+*.swp
+*.DS_store
+
