@@ -1,13 +1,13 @@
-window.onload = function () {
+window.onload = () => {
   let addNewTopic = document.querySelector('#add_new_topic');
   let newTopic = document.querySelector('#new_topic');
   let topics = document.querySelector('#topics');
 
   if (addNewTopic && newTopic && topics) {
-    newTopic.addEventListener('keyup', function (e) {
+    newTopic.addEventListener('keyup', (e) => {
       e.target.value = e.target.value.replace(/\s/g, '');
     });
-    addNewTopic.addEventListener('click', function (e) {
+    addNewTopic.addEventListener('click', (e) => {
       const topicContainer = document.createElement('button');
       topicContainer.type = 'button';
       topicContainer.textContent = newTopic.value;
@@ -26,7 +26,7 @@ window.onload = function () {
       topics.append(topicContainer);
       newTopic.value = '';
     });
-    topics.addEventListener('click', function (e) {
+    topics.addEventListener('click', (e) => {
       if (e.target.type === 'button') {
         e.target.remove();
       }
