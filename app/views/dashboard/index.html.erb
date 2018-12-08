@@ -1,23 +1,21 @@
 <div class="container">
-  <h1>Dashboard</h1>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Posts</h5>
-            <p class="card-text"><%= @postsCount %></p>
-          </div>
+  <h1 class="text-center mb-3">Dashboard</h1>
+  <div class="row">
+    <div class="col">
+      <a href="#" class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Posts</h5>
+          <p class="card-text"><%= @postsCount %></p>
         </div>
-      </div>
-      <div class="col">
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title">Replies</h5>
-            <p class="card-text"><%= @repliesCount %></p>
-          </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="#" class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Replies</h5>
+          <p class="card-text"><%= @repliesCount %></p>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
