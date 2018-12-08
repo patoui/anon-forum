@@ -1,12 +1,8 @@
 include SessionsHelper
 
-class DashboardController < ApplicationController
+class Admin::AdminController < ApplicationController
+  http_basic_authenticate_with name: "patoui", password: "abc123"
   before_action :require_login
-
-  def index
-    @postsCount = Post.count
-    @repliesCount = Reply.count
-  end
 
   private
 
