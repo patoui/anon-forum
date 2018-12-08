@@ -9,7 +9,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'label', 'Password'
   end
 
-  test "can log user in" do
+  test "can log in" do
     User.create(email: 'patrique.ouimet@gmail.com', password: 'abc123')
 
     post '/login', params: {
@@ -23,5 +23,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select 'h1', 'Dashboard'
+    assert session[:user_id]
   end
 end
