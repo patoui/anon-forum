@@ -18,4 +18,10 @@ Rails.application.routes.draw do
 
   post '/thread/:slug/reply/:id/downvote' => 'reply_downvote#create'
 
+  get '/login' => 'sessions#new'
+
+  post '/login' => 'sessions#create'
+
+  get '/dashboard' => 'dashboard#index'
+
 end
