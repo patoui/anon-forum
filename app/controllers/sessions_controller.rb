@@ -1,7 +1,7 @@
 include SessionsHelper
 
 class SessionsController < ApplicationController
-  http_basic_authenticate_with name: "patoui", password: "abc123"
+#   http_basic_authenticate_with name: "patoui", password: "abc123"
 
   def new
   end

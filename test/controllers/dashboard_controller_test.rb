@@ -10,7 +10,7 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     end
     logInAdmin
 
-    get '/dashboard'
+    get '/admin/dashboard'
 
     assert_response :success
     assert_select 'h1', 'Dashboard'
@@ -20,6 +20,10 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
 
   private
   def logInAdmin
+    #@request.headers['Authorization'] = ActionController::HttpAuthentication::Basic.encode_credentials('patoui', 'abc123')
+    #@request.env['HTTP_AUTHORIZATION'] = "Basic #{ActiveSupport::Base64.encode64("patoui:abc123")}"
+    # @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('patoui', 'abc123')
+    # request.headers['Authorization'] = ActionController::HttpAuthentication::Basic.encode_credentials('patoui', 'abc123')
     User.create(email: 'patrique.ouimet@gmail.com', password: 'abc123')
     post '/login', params: {
       email: 'patrique.ouimet@gmail.com',
