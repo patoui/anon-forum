@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_paranoid
   validates :title, presence: true, bad_word: true
   validates :body, presence: true, bad_word: true
 

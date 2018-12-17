@@ -26,7 +26,7 @@ class PostController < ApplicationController
   end
 
   def show
-    @post = Post.where(slug: params[:slug]).first
+    @post = Post.find_by(slug: params[:slug])
   end
 
   private

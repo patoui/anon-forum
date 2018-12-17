@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   namespace :admin do
-    get 'dashboard' => 'dashboard#index'
+    get '/dashboard' => 'dashboard#index'
+    get '/thread' => 'post#index'
+    delete '/thread/:id' => 'post#destroy'
   end
 end
