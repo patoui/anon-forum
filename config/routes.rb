@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     get '/dashboard' => 'dashboard#index'
     get '/thread' => 'post#index'
     delete '/thread/:id' => 'post#destroy'
+    get '/reply' => 'reply#index'
+    delete '/reply/:id' => 'reply#destroy'
   end
 end

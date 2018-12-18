@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h3 class="d-inline-block m-0">Replies</h3>
+
+    </div>
+
+    <div class="card-body">
+
+      <ul class="list-group list-group-flush">
+
+        <% @replies.each do |reply| %>
+
+          <li class="list-group-item">
+
+            <p class="mt-2 pre-wrap"><%= reply.body %></p>
+
+            <%= form_tag("/admin/reply/#{reply.id.to_s}", method: 'delete', class: 'mt-2') do %>
+              <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+            <% end %>
+
+            <p class="mb-0 mt-3 small text-muted">Thread: <%= reply.post.title %></p>
+
+          </li>
+
+        <% end %>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+  <%= will_paginate @replies %>
+
+</div>
+
