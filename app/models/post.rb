@@ -17,6 +17,27 @@ class Post < ApplicationRecord
     end
   end
 
+  def self.search(q)
+    posts = self.includes(:tags)
+    tags = []
+
+    if q
+      tags = q.scan(/(#[a-zA-Z0-9]+)/).flatten
+      tags.each { |tag| q = q.gsub(tag, '') }
+      q = q.strip
+      if q.length > 0
+        posts = posts.where('title LIKE ?', "%#{q}%")
+      end
+      tags = tags.map{ |tag| tag.gsub('#', '') }
+    end
+
+    if tags.length > 0
+      posts = posts.where('tags.name': tags)
+    end
+
+    return posts
+  end
+
   private
   def generate_slug
     newSlug = self.title.parameterize

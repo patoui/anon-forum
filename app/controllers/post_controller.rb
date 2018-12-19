@@ -5,9 +5,7 @@ class PostController < ApplicationController
 
   def index
     page = params[:page].present? ? params[:page] : 1
-    @posts = params[:q].present? ?
-      Post.where('title LIKE ?', "%#{params[:q]}%").paginate(:page => page) :
-      Post.paginate(:page => page)
+    @posts = Post.search(params[:q]).paginate(:page => page)
   end
 
   def new

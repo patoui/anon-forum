@@ -24,7 +24,7 @@
 
             <p class="m-0 small text-monospace text-muted">
               <% post.tags.all.each do |tag|  %>
-                <a href="/?tag=<%= tag.name %>" class="mr-2"><%= '#' + tag.name %></a>
+                <a href="/?q=<%= '%23' + tag.name %>" class="mr-2"><%= '#' + tag.name %></a>
               <% end %>
             </p>
 
