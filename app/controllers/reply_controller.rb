@@ -9,11 +9,11 @@ class ReplyController < ApplicationController
 
     if @reply.save
       record_activity('created-reply', request, @reply)
-      redirect_to post_show_path(@post.slug)
     else
       flash[:reply_errors] = @reply.errors.full_messages
-      redirect_to post_show_path(@post.slug)
     end
+
+    redirect_to post_show_path(@post.slug)
   end
 
 end
