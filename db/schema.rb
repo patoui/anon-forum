@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_002357) do
+ActiveRecord::Schema.define(version: 2018_12_25_171652) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2018_12_18_002357) do
     t.index ["name"], name: "index_activities_on_name"
   end
 
+  create_table "associations", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_associations_on_post_id"
+    t.index ["tag_id"], name: "index_associations_on_tag_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "slug"
     t.string "title"
@@ -35,14 +44,6 @@ ActiveRecord::Schema.define(version: 2018_12_18_002357) do
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["slug"], name: "index_posts_on_slug"
-  end
-
-  create_table "posts_tags", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
-    t.index ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id", unique: true
-    t.index ["post_id"], name: "index_posts_tags_on_post_id"
-    t.index ["tag_id"], name: "index_posts_tags_on_tag_id"
   end
 
   create_table "replies", force: :cascade do |t|

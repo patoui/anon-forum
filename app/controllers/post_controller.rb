@@ -5,7 +5,9 @@ class PostController < ApplicationController
 
   def index
     page = params[:page].present? ? params[:page] : 1
-    @posts = Post.search(params[:q]).paginate(:page => page)
+    @search = params[:q]
+    @posts = Post.search(@search).paginate(:page => page)
+    @popularTags = Tag.popular
   end
 
   def new

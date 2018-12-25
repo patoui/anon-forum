@@ -1,16 +1,24 @@
 <div class="container">
 
-  <div class="card">
+  <div class="row">
 
-    <div class="card-header">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
 
-      <h3 class="d-inline-block m-0">Threads</h3>
+      <form action="/" method="get" class="form-inline mb-3">
 
-      <a href="/thread/new" class="btn btn-outline-secondary btn-sm float-right mt-1">New Thread</a>
+        <div class="input-group w-100">
 
-    </div>
+          <input id="search" type="text" name="q" class="form-control" placeholder="Find a thread or #tag!" value="<%= @search %>">
 
-    <div class="card-body">
+          <div class="input-group-append">
+
+            <button type="submit" class="input-group-text"><i class="fas fa-search" aria-label="Search"></i></button>
+
+          </div>
+
+        </div>
+
+      </form>
 
       <ul class="list-group list-group-flush">
 
@@ -23,7 +31,7 @@
             <p><%= post.body ? strip_tags(post.body)[0...100] + '...' : '' %></p>
 
             <p class="m-0 small text-monospace text-muted">
-              <% post.tags.all.each do |tag|  %>
+              <% post.tags.each do |tag| %>
                 <a href="/?q=<%= '%23' + tag.name %>" class="mr-2"><%= '#' + tag.name %></a>
               <% end %>
             </p>
@@ -33,6 +41,26 @@
         <% end %>
 
       </ul>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+
+      <div class="p-3 p-md-0">
+
+        <h3 class="mt-2 text-muted">Popular Tags</h3>
+
+        <div>
+
+          <% @popularTags.each do |tag| %>
+
+            <a href="/?q=<%= '%23' + tag.name %>" class="badge badge-pill"><%= '#' + tag.name + ' - ' + tag.tag_count.to_s %></a>
+
+          <% end %>
+
+        </div>
+
+      </div>
 
     </div>
 

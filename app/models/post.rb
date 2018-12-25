@@ -7,12 +7,14 @@ class Post < ApplicationRecord
   before_create :generate_slug
 
   has_many :replies, dependent: :destroy
-  has_and_belongs_to_many :tags, -> { distinct }
+  has_many :associations
+  has_many :tags, through: :associations
 
   def addTags(items)
     if items.kind_of?(Array)
       items.each do |item|
-        self.tags << Tag.find_or_create_by(name: item)
+        tag = Tag.find_or_create_by(name: item)
+        self.associations.find_or_create_by(tag_id: tag.id)
       end
     end
   end
