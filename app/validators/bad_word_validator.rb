@@ -10,7 +10,7 @@ class BadWordValidator < ActiveModel::EachValidator
     if value_array.length > 0
       for word in value_array
         if bad_words.include? word.downcase
-          record.errors[attribute] << (options[:message] || "The #{attribute} must not contain bad words.")
+          record.errors[attribute] << (options[:message] || " must not contain bad words.")
           break
         end
       end

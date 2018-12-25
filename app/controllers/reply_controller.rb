@@ -9,9 +9,10 @@ class ReplyController < ApplicationController
 
     if @reply.save
       record_activity('created-reply', request, @reply)
-      redirect_to "/thread/#{@post.slug}"
+      redirect_to post_show_path(@post.slug)
     else
-      render template: '/post/show' and return
+      flash[:reply_errors] = @reply.errors.full_messages
+      redirect_to post_show_path(@post.slug)
     end
   end
 

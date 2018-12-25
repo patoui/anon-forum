@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  get '/' => 'post#index'
-  get '/thread/new' => 'post#new'
-  post '/thread' => 'post#create'
-  get '/thread/:slug' => 'post#show'
+  root 'post#index'
+  get '/thread' => 'post#index', as: 'post_index'
+  get '/thread/new' => 'post#new', as: 'post_new'
+  post '/thread' => 'post#create', as: 'post_create'
+  get '/thread/:slug' => 'post#show', as: 'post_show'
 
-  post '/thread/:slug/upvote' => 'post_upvote#create'
-  post '/thread/:slug/downvote' => 'post_downvote#create'
+  post '/thread/:slug/upvote' => 'post_upvote#create', as: 'post_upvote_create'
+  post '/thread/:slug/downvote' => 'post_downvote#create', as: 'post_downvote_create'
 
-  post '/thread/:slug/reply' => 'reply#create'
-  post '/thread/:slug/reply/:id/upvote' => 'reply_upvote#create'
-  post '/thread/:slug/reply/:id/downvote' => 'reply_downvote#create'
+  post '/thread/:slug/reply' => 'reply#create', as: 'reply_create'
+  post '/thread/:slug/reply/:id/upvote' => 'reply_upvote#create', as: 'reply_upvote_create'
+  post '/thread/:slug/reply/:id/downvote' => 'reply_downvote#create', as: 'reply_downvote_create'
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

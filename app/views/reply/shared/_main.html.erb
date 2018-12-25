@@ -10,9 +10,9 @@
 
       <div class="invalid-feedback d-block">
 
-        <% if @reply.present? and @reply.errors.include?(:body) %>
+        <% if flash[:reply_errors] %>
 
-          <% @reply.errors[:body].each do |message| %>
+          <% flash[:reply_errors].each do |message| %>
 
             <p><%= message %></p>
 
