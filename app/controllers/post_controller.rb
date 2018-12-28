@@ -19,9 +19,9 @@ class PostController < ApplicationController
     if @post.save
       record_activity('created-post', request, @post)
       @post.addTags(params[:tags])
-      redirect_to action: 'index' and return
+      redirect_to root_path
     else
-      render 'new'
+      redirect_to post_new_path, :flash => { :post_errors => @post.errors }
     end
   end
 

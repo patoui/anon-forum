@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= form_tag("/thread") do %>
+  <%= form_tag(post_create_path) do %>
 
     <div class="form-group">
 
@@ -10,9 +10,9 @@
 
       <div class="invalid-feedback d-block">
 
-        <% if @post.errors.include?(:title) %>
+        <% if flash[:post_errors] and flash[:post_errors].key?('title') %>
 
-          <% @post.errors[:title].each do |message| %>
+          <% flash[:post_errors]['title'].each do |message| %>
 
             <p><%= message %></p>
 
@@ -29,13 +29,14 @@
       <label for="body">Body</label>
 
       <input id="thread_body" type="hidden" name="post[body]" value="<%= @post.body %>">
+
       <trix-editor input="thread_body"></trix-editor>
 
       <div class="invalid-feedback d-block">
 
-        <% if @post.errors.include?(:body) %>
+        <% if flash[:post_errors] and flash[:post_errors].key?('body') %>
 
-          <% @post.errors[:body].each do |message| %>
+          <% flash[:post_errors]['body'].each do |message| %>
 
             <p><%= message %></p>
 
