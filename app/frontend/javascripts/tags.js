@@ -4,7 +4,7 @@ let tags = document.querySelector('#tags');
 
 if (addNewTag && newTag && tags) {
   newTag.addEventListener('keyup', (e) => {
-    e.target.value = e.target.value.replace(/\s/g, '');
+    e.target.value = e.target.value.replace(/[^0-9a-z]/g, '');
   });
   addNewTag.addEventListener('click', (e) => {
     const tagContainer = document.createElement('button');

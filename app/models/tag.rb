@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  validates :name, presence: true, bad_word: true
+  validates :name, presence: true, bad_word: true, format: { with: /\A[a-z0-9]+\Z/i, message: "only allows lowercase letters" }
 
   has_many :associations
   has_many :posts, through: :associations

@@ -3,9 +3,9 @@ require 'test_helper'
 class Admin::PostControllerTest < ActionDispatch::IntegrationTest
   test "can see threads" do
     php_thread = Post.create(title: 'My PHP Thread', body: 'PHP is interesting')
-    php_thread.tags << Tag.find_or_create_by(name: 'php_is_neat')
+    php_thread.tags << Tag.find_or_create_by(name: 'phpisneat')
     rails_thread = Post.create(title: 'My Rails Thread', body: 'Rails is also interesting')
-    rails_thread.tags << Tag.find_or_create_by(name: 'rails_is_neat')
+    rails_thread.tags << Tag.find_or_create_by(name: 'railsisneat')
     logInAdmin
 
     get '/admin/thread'
@@ -13,9 +13,9 @@ class Admin::PostControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_not_nil assigns(:posts)
     assert_select 'h5', 'My PHP Thread'
-    assert_select 'a', '#php_is_neat'
+    assert_select 'a', '#phpisneat'
     assert_select 'h5', 'My Rails Thread'
-    assert_select 'a', '#rails_is_neat'
+    assert_select 'a', '#railsisneat'
     assert_select 'button', 'Delete'
   end
 
