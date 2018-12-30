@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_25_171652) do
+ActiveRecord::Schema.define(version: 2018_12_30_190344) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2018_12_25_171652) do
     t.integer "upvote_count", default: 0
     t.integer "downvote_count", default: 0
     t.datetime "deleted_at"
+    t.boolean "has_replies", default: true, null: false
     t.index ["deleted_at"], name: "index_posts_on_deleted_at"
     t.index ["slug"], name: "index_posts_on_slug"
   end

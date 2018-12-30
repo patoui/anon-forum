@@ -30,7 +30,9 @@
 
   </div>
 
-  <%= render 'reply/shared/main' %>
+  <% if @post.has_replies %>
+    <%= render 'reply/shared/main' %>
+  <% end %>
 
 </div>
 

@@ -44,7 +44,8 @@ class PostControllerTest < ActionDispatch::IntegrationTest
       params: {
         post: {
           title: "My New Thread",
-          body: "The body of my new thread"
+          body: "The body of my new thread",
+          has_replies: false
         },
         tags: [ 'rubyonrails' ]
       },
@@ -61,6 +62,13 @@ class PostControllerTest < ActionDispatch::IntegrationTest
         name: 'created-post',
         user_agent: 'FAKE_USER_AGENT',
         class_name: 'Post'
+      ).first
+    )
+    assert_not_nil(
+      Post.where(
+        title: "My New Thread",
+        body: "The body of my new thread",
+        has_replies: false
       ).first
     )
     assert_not_nil(Tag.find_by(name: 'rubyonrails'))
