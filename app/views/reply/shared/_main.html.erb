@@ -1,12 +1,10 @@
 <div id="reply" class="mt-4">
 
-  <h5 class="ml-2 text-muted">Reply</h5>
-
   <%= form_tag("/thread/#{@post.slug}/reply") do %>
 
     <div class="form-group">
 
-      <textarea id="reply_body" name="body" class="form-control" placeholder="Leave a reply..."></textarea>
+      <textarea id="reply_body" name="body" class="form-control border-0" placeholder="Leave a reply..."></textarea>
 
       <div class="invalid-feedback d-block">
 
