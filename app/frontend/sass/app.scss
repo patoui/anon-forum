@@ -15,17 +15,15 @@
 // Trix
 @import '~trix/dist/trix.css';
 
-.light-grey {
-  color: #ccc;
-}
+.merriweather { font-family: $font-family-merriweather; }
+
+.light-grey { color: #ccc; }
 
 .pagination {
   padding: 0 10px;
   .previous_page, .next_page, .current, a { padding: 10px 15px; }
 }
 
-#reply_actions a i.fas {
-  color: #ccc;
-}
+#reply_actions a i.fas { color: #ccc; }
 
 .pre-wrap { white-space: pre-wrap; }
