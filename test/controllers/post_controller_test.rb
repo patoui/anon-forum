@@ -81,8 +81,8 @@ class PostControllerTest < ActionDispatch::IntegrationTest
     get "/thread/#{post.slug}"
 
     assert_response :success
-    assert_select 'h3', 'My Thread'
-    assert_select 'p', 'My thread body'
+    assert_select 'h1', 'My Thread'
+    assert_select 'article', 'My thread body'
     assert_select 'p', 'First reply'
   end
 end

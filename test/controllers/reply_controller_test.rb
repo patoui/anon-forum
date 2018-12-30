@@ -8,8 +8,8 @@ class ReplyControllerTest < ActionDispatch::IntegrationTest
     get "/thread/#{post.slug}"
 
     assert_response :success
-    assert_select 'h3', 'My Thread with Comments'
-    assert_select 'p', 'My thread body'
+    assert_select 'h1', 'My Thread with Comments'
+    assert_select 'article', 'My thread body'
 
     post "/thread/#{post.slug}/reply",
       params: { body: "This is a cool thread!" },
@@ -35,8 +35,8 @@ class ReplyControllerTest < ActionDispatch::IntegrationTest
     get "/thread/#{post.slug}"
 
     assert_response :success
-    assert_select 'h3', 'My Thread with Comments'
-    assert_select 'p', 'My thread body'
+    assert_select 'h1', 'My Thread with Comments'
+    assert_select 'article', 'My thread body'
 
     post "/thread/#{post.slug}/reply",
       params: { body: "This is a cool thread!" },
