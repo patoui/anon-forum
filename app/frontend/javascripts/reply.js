@@ -1,5 +1,6 @@
 let upvotes = document.querySelectorAll('.upvote');
 let downvotes = document.querySelectorAll('.downvote');
+let replies = document.querySelectorAll('.reply');
 
 if (upvotes && downvotes) {
   upvotes.forEach((upvote) => {
@@ -23,6 +24,13 @@ if (upvotes && downvotes) {
             .textContent = parseInt(downvote.querySelector('.vote-count').textContent) + 1
         })
         .catch(() => { console.log('error occured') });
+    });
+  });
+
+  replies.forEach((reply) => {
+    reply.addEventListener('click', (e) => {
+      window.location.hash = 'reply_body';
+      document.querySelector('#reply_body').value = '@' + reply.dataset.replySlug + '\n';
     });
   });
 }

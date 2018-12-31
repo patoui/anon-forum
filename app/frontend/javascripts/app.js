@@ -1,4 +1,4 @@
 window.onload = () => {
-  require('./voting');
+  require('./reply');
   require('./tags');
 }
