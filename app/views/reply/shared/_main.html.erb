@@ -30,38 +30,62 @@
 
 <div id="replies" class="mt-4">
 
-  <h5 class="ml-2 text-muted">Replies</h5>
+  <% if @post.replies.length > 0 %>
 
-  <ul class="list-group list-group-flush">
+    <p class="mb-1 text-muted">Replies</p>
 
-    <% @post.replies.each do |reply| %>
+    <ul class="list-group list-group-flush">
 
-      <li class="list-group-item">
+      <% @post.replies.each do |reply| %>
 
-        <p class="mb-2 pre-wrap"><%= reply.body %></p>
+        <li class="list-group-item">
 
-        <p id="reply_actions" class="m-0 ml-2">
+          <div class="row small text-muted mb-3">
 
-          <button
-            type="button"
-            class="upvote btn pl-2 pr-2 light-grey"
-            data-url="<%= "/thread/#{@post.slug}/reply/#{reply.id}/upvote" %>">
-            <i class="fas fa-thumbs-up"></i><span class="vote-count ml-3"><%= reply.upvote_count %></span>
-          </button>
+            <div class="col">
 
-          <button
-            type="button"
-            class="downvote btn pl-2 pr-2 light-grey"
-            data-url="<%= "/thread/#{@post.slug}/reply/#{reply.id}/downvote" %>">
-            <i class="fas fa-thumbs-down"></i><span class="vote-count ml-3"><%= reply.downvote_count %></span>
-          </button>
+              <a id="<%= reply.slug %>" href="<%= '#' + reply.slug %>" class="mt-0 mb-3"><%= '> ' + reply.slug %></a>
 
-        </p>
+            </div>
 
-      </li>
+            <div class="col text-right">
 
-    <% end %>
+              <span><%= reply.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %d %l:%M %P %Z") %></span>
 
-  </ul>
+            </div>
+
+          </div>
+
+          <p class="mb-2 pre-wrap"><%= reply.body %></p>
+
+          <p id="reply_actions" class="m-0">
+
+            <button
+              type="button"
+              class="upvote btn pl-2 pr-2 light-grey"
+              data-url="<%= "/thread/#{@post.slug}/reply/#{reply.id}/upvote" %>">
+              <i class="fas fa-thumbs-up"></i><span class="vote-count ml-3"><%= reply.upvote_count %></span>
+            </button>
+
+            <button
+              type="button"
+              class="downvote btn pl-2 pr-2 light-grey"
+              data-url="<%= "/thread/#{@post.slug}/reply/#{reply.id}/downvote" %>">
+              <i class="fas fa-thumbs-down"></i><span class="vote-count ml-3"><%= reply.downvote_count %></span>
+            </button>
+
+          </p>
+
+        </li>
+
+      <% end %>
+
+    </ul>
+
+  <% else %>
+
+    <h4 class="merriweather text-center">No replies</h4>
+
+  <% end %>
 
 </div>
