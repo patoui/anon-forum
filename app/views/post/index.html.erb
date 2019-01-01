@@ -34,7 +34,7 @@
 
             <p class="m-0 small text-monospace">
 
-              <% post.tags.each do |tag| %>
+              <% Post.find(post.id).tags.each do |tag| %>
 
                 <a href="/?q=<%= '%23' + tag.name %>" class="mr-2 text-black-50"><%= '#' + tag.name %></a>
 
