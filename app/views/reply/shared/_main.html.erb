@@ -2,9 +2,9 @@
 
   <%= form_tag("/thread/#{@post.slug}/reply") do %>
 
-    <div class="form-group">
+    <div id="reply_body_container" class="form-group">
 
-      <textarea id="reply_body" name="body" class="form-control border-0" placeholder="Leave a reply..."></textarea>
+      <textarea id="reply_body" name="body" class="form-control border-0" placeholder="Leave a reply..." data-reply-suggestion-url="<%= reply_suggestion_index_path(@post.slug) %>"></textarea>
 
       <div class="invalid-feedback d-block">
 
@@ -22,7 +22,9 @@
 
     </div>
 
-    <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-outline-secondary btn-sm">Submit</button>
+    </div>
 
   <% end %>
 
@@ -44,13 +46,13 @@
 
             <div class="col">
 
-              <a id="<%= reply.slug %>" href="<%= '#' + reply.slug %>" class="mt-0 mb-3"><%= '> ' + reply.slug %></a>
+              <a id="<%= reply.slug %>" href="<%= '#' + reply.slug %>" class="mt-0 mb-3 text-monospace"><%= '@' + reply.slug %></a>
 
             </div>
 
             <div class="col text-right">
 
-              <span><%= reply.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %d %l:%M %P %Z") %></span>
+              <span><%= reply.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %-d, %l:%M %P %Z") %></span>
 
             </div>
 

@@ -28,7 +28,7 @@
 
             <h5 class="mt-3 mb-0 merriweather"><a href="/thread/<%= post.slug %>" class="text-dark"><%= post.title %></a></h5>
 
-            <p class="small text-muted"><%= post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %d %l:%M %P %Z") %></p>
+            <p class="small text-muted"><%= post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %-d, %l:%M %P %Z") %></p>
 
             <p class="text-muted"><%= post.body ? strip_tags(post.body)[0...100] + '...' : '' %></p>
 

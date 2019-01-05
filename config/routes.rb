@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post '/thread/:slug/reply/:id/upvote' => 'reply_upvote#create', as: 'reply_upvote_create'
   post '/thread/:slug/reply/:id/downvote' => 'reply_downvote#create', as: 'reply_downvote_create'
 
+  get '/thread/:slug/reply-suggestion' => 'reply_suggestion#index', as: 'reply_suggestion_index'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

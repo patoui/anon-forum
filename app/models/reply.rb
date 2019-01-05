@@ -9,14 +9,10 @@ class Reply < ApplicationRecord
 
   private
   def generate_slug
-    newSlug = 'reply-1'
+    newSlug = SecureRandom.hex 3
 
-    while existing = Reply.where(slug: newSlug, post_id: self.post_id).order(:created_at).first do
-      if existing.slug[-1].to_s == existing.slug[-1].to_s then
-        newSlug = 'reply-' + (existing.slug[-1].to_i + 1).to_s
-      else
-        newSlug = 'reply-2'
-      end
+    while existing = Reply.where(slug: newSlug, post_id: self.post_id).first do
+      newSlug = SecureRandom.hex 3
     end
 
     self.slug = newSlug
