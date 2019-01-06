@@ -1,14 +1,8 @@
 <div class="container">
 
-  <div class="card">
+  <div class="row">
 
-    <div class="card-header">
-
-      <h3 class="d-inline-block m-0">Threads</h3>
-
-    </div>
-
-    <div class="card-body">
+    <div class="col-xs-12 col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
 
       <ul class="list-group list-group-flush">
 
@@ -16,21 +10,35 @@
 
           <li class="list-group-item">
 
-            <h5 class="mt-3"><a href="/thread/<%= post.slug %>"><%= post.title %></a></h5>
+            <h5 class="mt-3 mb-0 merriweather"><a href="/thread/<%= post.slug %>" class="text-dark"><%= post.title %></a></h5>
 
-            <p><%= post.body ? strip_tags(post.body)[0...100] + '...' : '' %></p>
+            <p class="small text-muted"><%= post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime("%b %-d, %l:%M %P %Z") %></p>
 
-            <p class="m-0 small text-monospace text-muted">
-              <% post.tags.all.each do |tag|  %>
-                <a href="/?tag=<%= tag.name %>" class="mr-2"><%= '#' + tag.name %></a>
+            <p class="text-muted"><%= post.body ? strip_tags(post.body)[0...100] + '...' : '' %></p>
+
+            <p class="m-0 small text-monospace">
+
+              <% Post.find(post.id).tags.each do |tag| %>
+
+                <a href="/?q=<%= '%23' + tag.name %>" class="mr-2 text-black-50"><%= '#' + tag.name %></a>
+
               <% end %>
+
             </p>
 
-              <%= form_tag("/admin/thread/#{post.id.to_s}", method: 'delete', class: 'mt-2') do %>
-                <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-              <% end %>
+            <%= form_tag("/admin/thread/#{post.id.to_s}", method: 'delete', class: 'mt-2') do %>
+
+              <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+
+            <% end %>
 
           </li>
+
+        <% end %>
+
+        <% if @posts.length === 0 %>
+
+          <h4 class="merriweather text-center">No posts</h4>
 
         <% end %>
 
@@ -43,4 +51,3 @@
   <%= will_paginate @posts %>
 
 </div>
-
