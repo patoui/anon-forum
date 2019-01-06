@@ -39,9 +39,10 @@ if (upvotes && downvotes && replies) {
 if (reply) {
   reply.addEventListener('keyup', (e) => {
     let replyElement = e.target;
+    document.querySelector('[name=body]').value = replyElement.innerText;
     let suggestionList = document.querySelector('#suggestion_list');
     suggestionList ? suggestionList.remove() : null;
-    let symbol = e.target.value.match(/@\w+$/);
+    let symbol = e.target.innerHTML.match(/@\w+$/);
     if (symbol) {
       axios.get(e.target.dataset.replySuggestionUrl, { params: { q: symbol[0] } })
         .then((response) => {
@@ -60,14 +61,27 @@ if (reply) {
             list.appendChild(item);
             item.addEventListener('click', (e) => {
               let replyName = e.target.innerText;
-              replyElement.value = replyElement.value.replace(symbol[0], replyName);
+              replyElement.innerHTML = replyElement.innerHTML.replace(symbol[0], `<a class="reply-symbol" href="#${replyName.replace('@', '')}" style="cursor: pointer;">${replyName}</a>`);
+              console.log(replyElement.innerText);
+              document.querySelector('[name=body]').value = replyElement.innerText;
               document.querySelector('#suggestion_list').remove();
               replyElement.focus();
-              replyElement.setSelectionRange(replyElement.value.length ,replyElement.value.length);
+              let range = document.createRange();
+              let sel = window.getSelection();
+              range.setStart(reply.childNodes[reply.childNodes.length - 1], 1);
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              replyElement.focus();
             });
           });
           document.querySelector('#reply_body_container').appendChild(list);
         }).catch(() => { console.log('error occured') });
+    }
+  });
+  reply.addEventListener('click', (e) => {
+    if (e.target.classList.contains('reply-symbol')) {
+      window.location.href = `${window.location.pathname}#${e.target.innerText.replace('@', '')}`;
     }
   });
 }
