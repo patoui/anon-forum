@@ -38,3 +38,10 @@
 *.swp
 *.DS_store
 
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
